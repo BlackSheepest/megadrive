@@ -99,7 +99,7 @@ btst d6, ($FFFFF604).w|0D38 F604
 btst d6, d1|0D01
 btst d6, (a0)|0D10
 btst d6, $2A(a0)|0D28 002A
-bclr #7, ($FFFFE43D).w|08B8 007 E43D
+bclr #7, ($FFFFE43D).w|08B8 0007 E43D
 bclr #7, d2|0882 0007
 bclr #3, (a1)|0891 0003
 bclr #3, $2A(a1)|08A9 0003 002A
@@ -144,14 +144,14 @@ cmpa.l a1, a2|B5C9
 cmpi.b #$26, ($FFFFFFE4).w|0C38 0026 FFE4
 cmpi.w #$4170, ($FFFFFFB0).w|0C78 4170 FFB0
 cmpi.l #$FFFE8000, ($FFFFEE9C).w|0CB8 FFFE 8000 EE9C
-cmpi.w #3, ($FFFFFF08).l|0C79 0003 FFFF FF08
+cmpi.w #$3, ($FFFFFF08).l|0C79 0003 FFFF FF08
 cmpi.b #$2, d0|0C00 0002
 cmpi.w #$2E0, d3|0C43 02E0
 cmpi.l #$0, d2|0C82 0000 0000
 cmpi.b #$2, (a0)|0C10 0002
-cmpi.b #$2, $2A(a1)|0C29 0002 002A
-cmpi.w #$144, $14(a1)|0C68 144 14
-cmpi.b #$2, (a1)+|0C18 0002
+cmpi.b #$2, $20(a1)|0C29 0002 0020
+cmpi.w #$1044, $10(a0)|0C68 1044 0010
+cmpi.b #$2, (a0)+|0C18 0002
 cmpi.b #$2, -(a0)|0C20 0002
 cmp.b d0, d1|B200
 cmp.l d0, d7|BE80
@@ -162,7 +162,7 @@ cmp.b 1(a3), d0|B02B 0001
 cmp.w $14(a0), d0|B068 0014
 cmp.w (a6)+, d0|B05E
 cmp.b -(a2), d0|B022
-dbf d0, $556A|51C0 556A
+dbf d0, $556A|51C8 556A
 dbf d3, $FFA0|51CB FFA0
 dbeq d1, $FFFC|57C9 FFFC
 dbmi d4, $FFDC|5BCC FFDC
@@ -181,7 +181,7 @@ eori.l #$FFFF, (a0)|0A90 0000 FFFF
 eori.l #$FFFF, $40(a0)|0AA8 0000 FFFF 0040
 eori.l #$FFFF, (a0)+|0A98 0000 FFFF
 eori.l #$FFFF, -(a0)|0AA0 0000 FFFF
-eori #$0001,sr|0A7C 0001
+eori #$1, sr|0A7C 0001
 eor.b d0, d1|B101
 eor.w d5, d7|BB47
 exg d1, d2|C342
@@ -306,29 +306,29 @@ movea.l (sp)+, a2|245F
 movea.l -(sp), a2|2467
 movea.l (a4,d0.w), a3|2674 0000
 movea.l $18(a4,d0.w), a3|2674 0018
-movem.l d0-d4/a0-a2,($FFFFFF10).w|48F8 071F FF10
-movem.l d0-d5/a0-a2,($FFFFFF10).w|48F8 073F FF10
-movem.l d0-d6/a0-a2,($FFFFFF10).w|48F8 077F FF10
-movem.l d0-d6/a0-a4,($FFFFFF10).w|48F8 1F7F FF10
-movem.l ($FFFFFF10).w,d0-d4/a0-a2|4CF8 071F FF10
-movem.l ($FFFFFF10).w,d0-d5/a0-a2|4CF8 073F FF10
-movem.l ($FFFFFF10).w,d0-d6/a0-a2|4CF8 077F FF10
-movem.l ($FFFFFF10).w,d0-d6/a0-a4|4CF8 1F7F FF10
-movem.w d0-d1,-(sp)|48A7 C000
-movem.w d0-d2,-(sp)|48A7 E000
-movem.l a0-a3,-(a6)|48E6 00F0
-movem.l a0-a5,-(a6)|48E6 00FC
-movem.l d0-d1,-(sp)|48E7 C000
-movem.l d0-d5,-(sp)|48E7 FC00
-movem.l d0-a6,-(sp)|48E7 FFFE
-movem.w (sp)+,d0-d1|4C9F 0003
-movem.w (sp)+,d0-d2|4C9F 0007
-movem.l (sp)+,d0-d5|4CDF 003F
-movem.l (sp)+,d1-d2|4CDF 0006
-movem.l (sp)+,d1-d4|4CDF 001E
-movem.l (sp)+,a2-a4|4CDF 1C00
-movem.l (sp)+,a4-a6|4CDF 7000
-movem.l (sp)+,d0-a6|4CDF 7FFF
+movem.l d0-d4/a0-a2, ($FFFFFF10).w|48F8 071F FF10
+movem.l d0-d5/a0-a2, ($FFFFFF10).w|48F8 073F FF10
+movem.l d0-d6/a0-a2, ($FFFFFF10).w|48F8 077F FF10
+movem.l d0-d6/a0-a4, ($FFFFFF10).w|48F8 1F7F FF10
+movem.l ($FFFFFF10).w, d0-d4/a0-a2|4CF8 071F FF10
+movem.l ($FFFFFF10).w, d0-d5/a0-a2|4CF8 073F FF10
+movem.l ($FFFFFF10).w, d0-d6/a0-a2|4CF8 077F FF10
+movem.l ($FFFFFF10).w, d0-d6/a0-a4|4CF8 1F7F FF10
+movem.w d0-d1, -(sp)|48A7 C000
+movem.w d0-d2, -(sp)|48A7 E000
+movem.l a0-a3, -(a6)|48E6 00F0
+movem.l a0-a5, -(a6)|48E6 00FC
+movem.l d0-d1, -(sp)|48E7 C000
+movem.l d0-d5, -(sp)|48E7 FC00
+movem.l d0-a6, -(sp)|48E7 FFFE
+movem.w (sp)+, d0-d1|4C9F 0003
+movem.w (sp)+, d0-d2|4C9F 0007
+movem.l (sp)+, d0-d5|4CDF 003F
+movem.l (sp)+, d1-d2|4CDF 0006
+movem.l (sp)+, d1-d4|4CDF 001E
+movem.l (sp)+, a2-a4|4CDF 1C00
+movem.l (sp)+, a4-a6|4CDF 7000
+movem.l (sp)+, d0-a6|4CDF 7FFF
 movep.w 0(a0), d3|0708 0000
 movep.l 0(a0), d3|0748 0000
 movep.w d2, 0(a0)|0588 0000
@@ -389,7 +389,6 @@ or.w d1, $A(a0)|8368 000A
 or.w d0, (a0)+|8158
 or.w d0, -(a0)|8160
 pea ($FFFFE53C).w|4878 E53C
-pea d2|4842
 pea (a2)|4852
 pea $2A(a0)|4868 002A
 rol.w d0, d1|E179
@@ -399,22 +398,22 @@ rol.w ($FFFFFFE0).w|E7F8 FFE0
 rte|4E73
 rtr|4E77
 rts|4E75
-st ($FFFFF000).w|50F0 F000
-sf ($FFFFF000).w|51F0 F000
-shi ($FFFFF000).w|52F0 F000
-sls ($FFFFF000).w|53F0 F000
-scc ($FFFFF000).w|54F0 F000
-scs ($FFFFF000).w|55F0 F000
-sne ($FFFFF000).w|56F0 F000
-seq ($FFFFF000).w|57F0 F000
-svc ($FFFFF000).w|58F0 F000
-svs ($FFFFF000).w|59F0 F000
-spl ($FFFFF000).w|5AF0 F000
-smi ($FFFFF000).w|5BF0 F000
-sge ($FFFFF000).w|5CF0 F000
-slt ($FFFFF000).w|5DF0 F000
-sgt ($FFFFF000).w|5EF0 F000
-sle ($FFFFF000).w|5FF0 F000
+st ($FFFFF000).w|50F8 F000
+sf ($FFFFF000).w|51F8 F000
+shi ($FFFFF000).w|52F8 F000
+sls ($FFFFF000).w|53F8 F000
+scc ($FFFFF000).w|54F8 F000
+scs ($FFFFF000).w|55F8 F000
+sne ($FFFFF000).w|56F8 F000
+seq ($FFFFF000).w|57F8 F000
+svc ($FFFFF000).w|58F8 F000
+svs ($FFFFF000).w|59F8 F000
+spl ($FFFFF000).w|5AF8 F000
+smi ($FFFFF000).w|5BF8 F000
+sge ($FFFFF000).w|5CF8 F000
+slt ($FFFFF000).w|5DF8 F000
+sgt ($FFFFF000).w|5EF8 F000
+sle ($FFFFF000).w|5FF8 F000
 stop #$2500|4E72 2500
 suba.w #$20, a0|90FC 0020
 suba.w ($FFFFF100).w, a2|94F8 F100
